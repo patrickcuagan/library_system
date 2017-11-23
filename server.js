@@ -19,7 +19,7 @@ function Server(port, router) {
         app.use(methodOverride());
 
         //routes
-        app.use(express.static('./public'));
+        app.use('/public', express.static(__dirname + '/public'));
 		app.use('/api', this.router);
 
 		// // User profile
