@@ -1,49 +1,20 @@
-var express = require('express');
-var app = express();
+var Server = require('./server.js');
+var router = require('./router.js');
+var logger = require('./logger.js');
+var mongoose = require('mongoose');
+var config = require('config');
 
-app.use('/client', express.static(__dirname + '/client'));
+//database
+var options = {
+    keepAlive: 1, 
+    useMongoClient: true 
+};
+mongoose.connect(config.get('db'), options);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    logger.info('Database connection successful.');
+});
 
-
-// User profile
-app.get('/signin', function(req, res){
-	res.sendfile(__dirname + '/client/views/signin.html');
-})
-
-app.get('/signup', function(req, res){
-	res.sendfile(__dirname + '/client/views/signup.html');
-})
-
-app.get('/profile', function(req, res){
-	res.sendfile(__dirname + '/client/views/profile.html');
-})
-
-app.get('/settings', function(req, res){
-	res.sendfile(__dirname + '/client/views/setting.html');
-})
-
-// Books
-app.get('/', function(req, res){
-	res.sendfile(__dirname + '/client/views/gallery.html');
-})
-
-app.get('/book', function(req, res){
-	res.sendfile(__dirname + '/client/views/book.html');
-})
-
-app.get('/search', function(req, res){
-	res.sendfile(__dirname + '/client/views/search.html');
-})
-
-// Admin
-app.get('/manage_users', function(req, res){
-	res.sendfile(__dirname + '/client/views/manage_users.html');
-})
-
-app.get('/manage_books', function(req, res){
-	res.sendfile(__dirname + '/client/views/manage_books.html');
-})
-
-
-app.listen(3000, function(){
-	console.log("Server started on port 3000");
-})
+var app = new Server(config.get('port'), router);
+app.start();

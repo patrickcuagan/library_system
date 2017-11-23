@@ -1,0 +1,4 @@
+{
+    "db": "mongodb://localhost/library",
+    "port": 3000
+}
