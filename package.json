@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "config": "^1.28.1",
     "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
     "method-override": "^2.3.10",
     "mongoose": "^4.13.4",
     "winston": "^3.0.0-rc1"
