@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Library System</title>
+  <title>Library Catalog</title>
   <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,62 +42,15 @@
         <a class="navbar-brand">
           <div ui-include="client/img/logo.svg'"></div>
           <img src="/public/img/logo.png" alt="." class="hide">
-          <span class="hidden-folded inline">Library System</span>
+          <span class="hidden-folded inline">Library Catalog</span>
         </a>
         <!-- / brand -->
       </div>
-      <div flex class="hide-scroll">
+       <div flex class="hide-scroll">
           <nav class="scroll nav-light">
           
               <ul class="nav" ui-nav>
-                <li class="nav-header hidden-folded">
-                  <small class="text-muted">Main</small>
-                </li>
                 
-                <li>
-                  <a href="/" >
-                    <span class="nav-icon">
-                      <i class="material-icons">&#xe3fc;
-                        <span ui-include="client/img/i_0.svg'"></span>
-                      </i>
-                    </span>
-                    <span class="nav-text">Books</span>
-                  </a>
-                </li>
-
-                 <li>
-                  <a href="search" >
-                    <span class="nav-icon">
-                      <i class="material-icons">&#xe3fc;
-                        <span ui-include="client/img/i_0.svg'"></span>
-                      </i>
-                    </span>
-                    <span class="nav-text">Search</span>
-                  </a>
-                </li>
-
-                 <li>
-                  <a href="profile" >
-                    <span class="nav-icon">
-                      <i class="material-icons">&#xe3fc;
-                        <span ui-include="client/img/i_0.svg'"></span>
-                      </i>
-                    </span>
-                    <span class="nav-text">Account Profile</span>
-                  </a>
-                </li>
-
-                 <li>
-                  <a href="settings" >
-                    <span class="nav-icon">
-                      <i class="material-icons">&#xe3fc;
-                        <span ui-include="client/img/i_0.svg'"></span>
-                      </i>
-                    </span>
-                    <span class="nav-text">Account Settings</span>
-                  </a>
-                </li>          
-
                 <li>
                   <a href="signin" >
                     <span class="nav-icon">
@@ -112,12 +65,21 @@
                 <li class="nav-header hidden-folded">
                   <small class="text-muted">Admin</small>
                 </li>
-
+                <li>
+                  <a href="/" >
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe3fc;
+                        <span ui-include="'../assets/images/i_0.svg'"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Books</span>
+                  </a>
+                </li>
                 <li>
                   <a href="manage_users" >
                     <span class="nav-icon">
                       <i class="material-icons">&#xe3fc;
-                        <span ui-include="client/img/i_0.svg'"></span>
+                        <span ui-include="'../assets/images/i_0.svg'"></span>
                       </i>
                     </span>
                     <span class="nav-text">Manage Users</span>
@@ -128,7 +90,7 @@
                   <a href="manage_books" >
                     <span class="nav-icon">
                       <i class="material-icons">&#xe3fc;
-                        <span ui-include="client/img/i_0.svg'"></span>
+                        <span ui-include="'../assets/images/i_0.svg'"></span>
                       </i>
                     </span>
                     <span class="nav-text">Manage Books</span>

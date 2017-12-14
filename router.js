@@ -3,7 +3,7 @@ var logger = require('./logger.js');
 var jwt = require("jsonwebtoken");
 var ctrl = require('./server/controllers/book-controller.js');
 var sessionCtrl = require("./server/controllers/session.server.controller.js");
-var bookCtrl = require("./server/controllers/meeting.server.controller.js");
+//var bookCtrl = require("./server/controllers/meeting.server.controller.js");
 var router = express.Router();
 
 //routes
