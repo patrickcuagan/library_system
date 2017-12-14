@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Library System</title>
+  <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+  <meta name="apple-mobile-web-app-title" content="Flatkit">
+  <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" sizes="196x196" href="../assets/images/logo.png">
+  
+  <!-- style -->
+  <link rel="stylesheet" href="/public/css/animate.min.css" type="text/css" />
+  <link rel="stylesheet" href="/public/css/glyphicons.css" type="text/css" />
+  <link rel="stylesheet" href="/public/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="/public/css/material-design-icons.css" type="text/css" />
+
+  <link rel="stylesheet" href="/public/css/bootstrap.min.css" type="text/css" />
+  <!-- build:css ../assets/styles/app.min.css -->
+  <link rel="stylesheet" href="/public/css/app.min.css" type="text/css" />
+  <!-- endbuild -->
+  <link rel="stylesheet" href="/public/css/font.css" type="text/css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+<!-- ############ LAYOUT START-->
+
+    <!-- aside -->
+  <div id="aside" class="app-aside modal fade nav-dropdown">
+    <!-- fluid app aside -->
+    <div class="left navside dark dk" layout="column">
+      <div class="navbar no-radius">
+        <!-- brand -->
+        <a class="navbar-brand">
+          <div ui-include="'../assets/images/logo.svg'"></div>
+          <img src="/public/img/logo.png" alt="." class="hide">
+          <span class="hidden-folded inline">Library System</span>
+        </a>
+        <!-- / brand -->
+      </div>
+      <div flex class="hide-scroll">
+          <nav class="scroll nav-light">
+          
+              <ul class="nav" ui-nav>
+                <li class="nav-header hidden-folded">
+                  <small class="text-muted">Main</small>
+                </li>
+                
+                <li>
+                  <a href="/" >
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe3fc;
+                        <span ui-include="'../assets/images/i_0.svg'"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Books</span>
+                  </a>
+                </li>
+
+                 <li>
+                  <a href="search" >
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe3fc;
+                        <span ui-include="'../assets/images/i_0.svg'"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Search</span>
+                  </a>
+                </li>
+
+                 <li>
+                  <a href="profile" >
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe3fc;
+                        <span ui-include="'../assets/images/i_0.svg'"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Account Profile</span>
+                  </a>
+                </li>
+
+                 <li>
+                  <a href="settings" >
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe3fc;
+                        <span ui-include="'../assets/images/i_0.svg'"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Account Settings</span>
+                  </a>
+                </li>          
+
+                <li>
+                  <a href="signin" >
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe3fc;
+                        <span ui-include="client/img/i_0.svg'"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Sign Out</span>
+                  </a>
+                </li> 
+
+                <li class="nav-header hidden-folded">
+                  <small class="text-muted">Admin</small>
+                </li>
+
+                <li>
+                  <a href="manage_users" >
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe3fc;
+                        <span ui-include="'../assets/images/i_0.svg'"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Manage Users</span>
+                  </a>
+                </li>  
+
+                <li>
+                  <a href="manage_books" >
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe3fc;
+                        <span ui-include="'../assets/images/i_0.svg'"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">Manage Books</span>
+                  </a>
+                </li>  
+              </ul>
+          </nav>
+      </div>
+      <div flex-no-shrink class="b-t">
+        <div class="nav-fold">
+          <a href="profile.html">
+              <span class="pull-left">
+                <img src="/public/img/a0.jpg" alt="..." class="w-40 img-circle">
+              </span>
+              <span class="clear hidden-folded p-x">
+                <span class="block _500">Jean Reyes</span>
+                <small class="block text-muted"><i class="fa fa-circle text-success m-r-sm"></i>online</small>
+              </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / -->
+  
+  <!-- content -->
+  <div id="content" class="app-content box-shadow-z0" role="main">
+    <div class="app-header white box-shadow">
+        <div class="navbar">
+            <!-- Open side - Naviation on mobile -->
+            <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up">
+              <i class="material-icons">&#xe5d2;</i>
+            </a>
+            <!-- / -->
+        
+            <!-- Page title - Bind to $state's title -->
+            <div class="navbar-item pull-left h5" ng-bind="$state.current.data.title" id="pageTitle"></div>
+        
+            <!-- navbar right -->
+            <ul class="nav navbar-nav pull-right">
+              <li class="nav-item dropdown pos-stc-xs">
+                
+                <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link clear" href data-toggle="dropdown">
+                  <span class="avatar w-32">
+                    <img src="client/img/a0.jpg" alt="...">
+                    <i class="on b-white bottom"></i>
+                  </span>
+                </a>
+                <div ui-include="'../views/blocks/dropdown.user.html'"></div>
+              </li>
+              <li class="nav-item hidden-md-up">
+                <a class="nav-link" data-toggle="collapse" data-target="#collapse">
+                  <i class="material-icons">&#xe5d4;</i>
+                </a>
+              </li>
+            </ul>
+            <!-- / navbar right -->
+        
+            <!-- navbar collapse -->
+            <div class="collapse navbar-toggleable-sm" id="collapse">
+              <div ui-include="'../views/blocks/navbar.form.right.html'"></div>
+              <!-- link and dropdown -->
+              <ul class="nav navbar-nav">
+                <li class="nav-item dropdown">
+                  <div ui-include="'../views/blocks/dropdown.new.html'"></div>
+                </li>
+              </ul>
+              <!-- / -->
+            </div>
+            <!-- / navbar collapse -->
+        </div>
+    </div>
+    <div ui-view class="app-body" id="view">
+
+<!-- ############ PAGE START-->
+
+  <div class="item">
+    <div class="item-bg">
+      <img src="client/img/c1.jpg" class="blur opacity-3">
+    </div>
+    <div class="p-a-md">
+      <div class="row m-t">
+        <div class="col-sm-7">
+          <a href class="pull-left m-r-md">
+          </a>
+          <div class="clear m-b">
+            <h3 class="m-a-0 m-b-xs">Turtles All The Way Down</h3>
+            <p class="text-muted"><span class="m-r">John Green</span></p>
+            <div class="block clearfix m-b">
+              
+            </div>
+            <a href class="btn btn-sm warn btn-rounded m-b">Borrow</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dker p-x">
+    <div class="row">
+      <div class="col-sm-6 push-sm-6">
+        
+      </div>
+      <div class="col-sm-6 pull-sm-6">
+        <div class="p-y-md clearfix nav-active-primary">
+          <ul class="nav nav-pills nav-sm">
+            <li class="nav-item active">
+              <a class="nav-link" href data-toggle="tab" data-target="#tab_1">Reviews</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href data-toggle="tab" data-target="#tab_4">About The Book</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="padding">
+    <div class="row">
+      <div class="col-sm-8 col-lg-9">
+        <div class="tab-content">      
+          <div class="tab-pane p-v-sm active" id="tab_1">
+            <div class="streamline b-l m-b m-l">
+              <div class="sl-item">
+                <div class="sl-left">
+                  <img src="client/img/a0.jpg" class="img-circle">
+                </div>
+                <div class="sl-content">
+                  <div class="sl-date text-muted">2 minutes ago</div>
+                  <div class="sl-author">
+                    <a href>Peter Joo</a>
+                  </div>
+                  <div>
+                    <p>Another great book from John Green. Surprised at the in depth handling of mental issues. It conveys the troubles very well. The book is more centered on the protagonist's thoughts than the adventure in itself. All John Green's typical elements are present: mystery, cars, death, relationships, weird names, social media and interesting facts about the universe. If you liked his other books, you will certainly love this one.</p>
+                  </div>
+                 
+                </div>
+              </div>
+              <div class="sl-item">
+                <div class="sl-left">
+                  <img src="client/img/a1.jpg" class="img-circle">
+                </div>
+                <div class="sl-content">
+                  <div class="sl-date text-muted">9:30</div>
+                  <div class="sl-author">
+                    <a href>Mike</a>
+                  </div>
+                  <div>
+                    <p>Read in one sitting. As someone who suffers from anxiety, I related to a lot of this book. Daisy is life. Loved her so damn much. Kinda bummed it's over. Hope we don't have to wait another 6 years for another book.</p>
+                  </div>
+                  <div class="box collapse in m-a-0" id="reply-2">
+                  </div>
+                </div>
+              </div>
+              <div class="sl-item">
+                <div class="sl-left">
+                  <img src="client/img/a2.jpg" class="img-circle">
+                </div>
+                <div class="sl-content">
+                  <div class="sl-date text-muted">8:30</div>
+                  <div class="sl-author">
+                    <a href>Moke</a>
+                  </div>
+                  <div>
+                    <p>Got it today and read it cover to cover. John Green has done his best work yet. This is a book that helps people to be compassionate to each other and to themselves. It is well written and eye opening to a mental health condition that deserves to be understood. Kudos John. Thanks for writing this most excellent book.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="sl-item">
+                <div class="sl-left">
+                  <img src="client/img/a3.jpg" class="img-circle">
+                </div>
+                <div class="sl-content">
+                  <div class="sl-date text-muted">Wed, 25 Mar</div>
+                  <p>Another brilliantly written book by one of my favorite authors. Turtles All the Way Down is an unprecedented look at teen mental illness, friendship, love and life that manages to be both funny and heartbreaking, and educational too. I read the book in one sitting, stopped to cry and laugh a few times, peppered it with sticky notes for passages to revisit and I am certain I will be re-reading it soon. I couldn't have asked for more from a book, except for it not to end. Thank you, John Green, for sharing such a personal glimpse into your head, and for helping those who struggle to feel more normal.</p>
+                </div>
+              </div>
+              <div class="sl-item">
+                <div class="sl-left">
+                  <img src="client/img/a4.jpg" class="img-circle">
+                </div>
+                <div class="sl-content">
+                  <div class="sl-date text-muted">Thu, 10 Mar</div>
+                  <p>Trip to the moon</p>
+                </div>
+              </div>
+              <div class="sl-item">
+                <div class="sl-left">
+                  <img src="client/img/a3.jpg" class="img-circle">
+                </div>
+                <div class="sl-content">
+                  <div class="sl-date text-muted">Sat, 5 Mar</div>
+                  <p>No traditional review of this one…..I just can’t. I got it at school at 11:40 am on release day and finished it at 6:25 pm and it BROKE. MY. HEART.
+
+It’s the most powerful and open book about mental illness that I have read, and it’s required reading for everyone, but especially those who don’t understand the intensity of OCD and extreme anxiety. It is unlike any of his other work, but it’s still funny and it’s still so so sad, but it’s also Green’s OWN struggle.
+
+Go read his interview with NYT and try to tell me you didn’t want to cry.
+And if I see even ONE “but it’s not like TFIOS” whiny review…….don’t get me started.
+
+Read this book. Work through the discomfort. Honor his pain.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane p-v-sm" id="tab_4">
+            <div class="row m-b">
+              <div class="col-xs-6">
+                <small class="text-muted">Publisher</small>
+                <div class="_500">Dutton Books for Young Readers; First Edition edition (October 10, 2017)</div>
+              </div>
+              <div class="col-xs-6">
+                <small class="text-muted">Language</small>
+                <div class="_500">English</div>
+              </div>
+            </div>
+            <div class="row m-b">
+              <div class="col-xs-6">
+                <small class="text-muted">Pages</small>
+                <div class="_500">304</div>
+              </div>
+              <div class="col-xs-6">
+                <small class="text-muted">Author</small>
+                <div class="_500">John Green</div>
+              </div>
+            </div>
+            <div>
+              <small class="text-muted">About the Author</small>
+              <div>John Green is the award-winning, #1 bestselling author of Looking for Alaska, An Abundance of Katherines, Paper Towns, Will Grayson, Will Grayson (with David Levithan), and The Fault in Our Stars. His many accolades include the Printz Medal, a Printz Honor, and the Edgar Award. John has twice been a finalist for the LA Times Book Prize and was selected by TIME magazine as one of the 100 Most Influential People in the World. With his brother, Hank, John is one half of the Vlogbrothers  and co-created the online educational series CrashCourse. You can join the millions who follow him on Twitter @johngreen and Instagram @johngreenwritesbooks or visit him online at johngreenbooks.com. John lives with his family in Indianapolis, Indiana.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-lg-3">
+        <div>
+          <div class="box">
+              <div class="box-header">
+                <h3>More From The Author</h3>
+              </div>
+              <div class="box-divider m-a-0"></div>
+              <ul class="list no-border p-b">
+                <li class="list-item">
+                  <div class="list-body">
+                    <div><a href>The Fault In Our Stars</a></div>
+                    <small class="text-muted text-ellipsis">John Green</small>
+                  </div>
+                </li>
+                <li class="list-item">
+                  <div class="list-body">
+                    <div><a href>Looking for Alaska</a></div>
+                    <small class="text-muted text-ellipsis">John Green</small>
+                  </div>
+                </li>
+                <li class="list-item">
+                  <div class="list-body">
+                    <div><a href>Paper Towns</a></div>
+                    <small class="text-muted text-ellipsis">John Green</small>
+                  </div>
+                </li>
+                <li class="list-item">
+                  <div class="list-body">
+                    <div><a href>Let It Snow</a></div>
+                    <small class="text-muted text-ellipsis">John Green</small>
+                  </div>
+                </li>
+                <li class="list-item">
+                  <div class="list-body">
+                    <div><a href>Kyle O'Reilly</a></div>
+                    <small class="text-muted text-ellipsis">John Green</small>
+                  </div>
+                </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ############ PAGE END-->
+
+    </div>
+  </div>
+  <!-- / -->
+
+
+
+<!-- ############ LAYOUT END-->
+
+  </div>
+<!-- build:js scripts/app.html.js -->
+<!-- jQuery -->
+  <script src="/public/scripts/jquery.js"></script>
+<!-- Bootstrap -->
+  <script src="/public/scripts/tether.min.js"></script>
+  <script src="/public/scripts/bootstrap.js"></script>
+<!-- core -->
+  <script src="/public/scripts/underscore-min.js"></script>
+  <script src="/public/scripts/jquery.storageapi.min.js"></script>
+  <script src="/public/scripts/pace.min.js"></script>
+
+  <script scripts="/public/scripts/config.lazyload.js"></script>
+
+  <script scripts="/public/scripts/palette.js"></script>
+  <script scripts="/public/scripts/ui-load.js"></script>
+  <script scripts="/public/scripts/ui-jp.js"></script>
+  <script scripts="/public/scripts/ui-include.js"></script>
+  <script scripts="/public/scripts/ui-device.js"></script>
+  <script scripts="/public/scripts/ui-form.js"></script>
+  <script scripts="/public/scripts/ui-nav.js"></script>
+  <script scripts="/public/scripts/ui-screenfull.js"></script>
+  <script scripts="/public/scripts/ui-scroll-to.js"></script>
+  <script scripts="/public/scripts/ui-toggle-class.js"></script>
+
+  <script scripts="/public/scripts/app.js"></script>
+
+  <!-- ajax -->
+  <script src="/public/scripts/jquery.pjax.js"></script>
+  <script scripts="/public/scripts/ajax.js"></script>
+<!-- endbuild -->
+</body>
+</html>
