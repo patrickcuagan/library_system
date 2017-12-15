@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 
-var bookSchema = mongoose.Schema({
+var BookSchema = mongoose.Schema({
     title: String,
     author: String,
     genre: String,
     description: String,
     year: String
+}, {
+    timestamps: true
 });
 
-var Book = mongoose.model('Book', bookSchema);
-
-module.exports = Book;
+module.exports = mongoose.model('Book', BookSchema);

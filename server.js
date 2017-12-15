@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var logger = require('./logger.js');
+var mongoose = require('mongoose');
+var config = require('config');
 
 function Server(port, router) {
 
@@ -18,7 +20,20 @@ function Server(port, router) {
         app.use(bodyParser.json());
         app.use(methodOverride());
 
-        //routes
+        //database
+        //database
+		var options = {
+		    keepAlive: 1, 
+		    useMongoClient: true 
+		};
+		mongoose.connect(config.db, options);
+
+		var db = mongoose.connection;
+		db.on('error', console.error.bind(console, 'connection error:'));
+		db.once('open', function() {
+		    logger.info('Database connection successful.');
+		});
+		        //routes
         app.use('/public', express.static(__dirname + '/public'));
 		app.use('/api', this.router);
 
@@ -60,6 +75,9 @@ function Server(port, router) {
 		app.get('/manage_books', function(req, res){
 			res.sendfile(__dirname + '/public/views/manage_books.html');
 		})
+		
+		require('./server/routes/user.routes.js')(app);
+		require('./server/routes/book.routes.js')(app);
 
 		app.listen(port, function() {
 			logger.info('Server started at port ' + port + '.');
