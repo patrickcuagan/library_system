@@ -43,21 +43,21 @@
       <div class="m-b text-sm">
         Sign up to your Library Account
       </div>
-      <form name="form">
+      <form method="post" action="/signup">
             <div class="md-form-group">
-          <input type="email" class="md-input" required>
+          <input type="email" name="username" class="md-input" required>
           <label>Email</label>
         </div>
         <div class="md-form-group">
-          <input type="password" class="md-input" required>
-          <label>Password</label>
+          <input type="password" name="password" class="md-input" required>
+          <label>Password</label>  
         </div>
         <div class="m-b-md">
           <label class="md-check">
             <input type="checkbox" required><i class="primary"></i> Agree the <a href>terms and policy</a>
           </label>
         </div>
-        <button type="submit" class="btn primary btn-block p-x-md">Sign up</button>
+        <button type="submit" value="Sign up" class="btn primary btn-block p-x-md">Sign up</button>
       </form>
     </div>
 

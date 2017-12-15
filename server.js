@@ -75,6 +75,8 @@ function Server(port, router) {
 		app.get('/manage_books', function(req, res){
 			res.sendfile(__dirname + '/public/views/manage_books.html');
 		})
+
+		
 		
 		require('./server/routes/user.routes.js')(app);
 		require('./server/routes/book.routes.js')(app);
