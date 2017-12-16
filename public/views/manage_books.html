@@ -90,19 +90,7 @@
               </ul>
           </nav>
       </div>
-      <div flex-no-shrink class="b-t">
-        <div class="nav-fold">
-          <a href="profile.html">
-              <span class="pull-left">
-                <img src="/public/img/a0.jpg" alt="..." class="w-40 img-circle">
-              </span>
-              <span class="clear hidden-folded p-x">
-                <span class="block _500">Jean Reyes</span>
-                <small class="block text-muted"><i class="fa fa-circle text-success m-r-sm"></i>online</small>
-              </span>
-          </a>
-        </div>
-      </div>
+      
     </div>
   </div>
   <!-- / -->
@@ -120,27 +108,7 @@
             <!-- Page title - Bind to $state's title -->
             <div class="navbar-item pull-left h5" ng-bind="$state.current.data.title" id="pageTitle"></div>
         
-            <!-- navbar right -->
-            <ul class="nav navbar-nav pull-right">
-              <li class="nav-item dropdown pos-stc-xs">
-                
-                <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link clear" href data-toggle="dropdown">
-                  <span class="avatar w-32">
-                    <img src="client/img/a0.jpg" alt="...">
-                    <i class="on b-white bottom"></i>
-                  </span>
-                </a>
-                <div ui-include="'../views/blocks/dropdown.user.html'"></div>
-              </li>
-              <li class="nav-item hidden-md-up">
-                <a class="nav-link" data-toggle="collapse" data-target="#collapse">
-                  <i class="material-icons">&#xe5d4;</i>
-                </a>
-              </li>
-            </ul>
+           
             <!-- / navbar right -->
         
             <!-- navbar collapse -->
@@ -264,7 +232,7 @@
           <form method="post" action="/add_book">
             <div class="form-group">
               <label for="exampleInputEmail1">Title</label>
-              <input type="text" name="title" id="title" class="form-control" placeholder="Book Name">
+              <input type="text" name="title" id="title" class="form-control" placeholder="Title">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Author</label>
@@ -272,28 +240,27 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Genre</label>
-              <input type="text" name="genre" id="genre" class="form-control" placeholder="Publisher">
+              <input type="text" name="genre" id="genre" class="form-control" placeholder="Genre">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Description</label>
-              <input type="text" name="description" id="description" class="form-control" placeholder="Number">
+              <input type="text" name="description" id="description" class="form-control" placeholder="Description">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Year</label>
-              <input type="text" name="year" id="year" class="form-control" placeholder="Number">
+              <input type="text" name="year" id="year" class="form-control" placeholder="Year of Publication">
             </div>
+            <div class="form-group">
 
-            </div>
-            <button type="submit" class="btn white m-b">Submit</button>
+            <button type="submit" class="btn success m-b">Submit</button>
+                        </div>
+
           </form>
 
       </div>
     </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn dark-white p-x-md" data-dismiss="modal">No</button>
-        <button type="button" class="btn danger p-x-md" data-dismiss="modal">Yes</button>
-      </div>
+      
     </div><!-- /.modal-content -->
   </div>
 </div>
