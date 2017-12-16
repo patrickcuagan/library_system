@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Library Catalog</title>
-         <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+<head>
+  <meta charset="utf-8" />
+  <title>Library Catalog</title>
+  <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- for ios 7 style, multi-resolution icon of 152x152 -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
   <link rel="apple-touch-icon" href="../assets/img/logo.png">
@@ -23,12 +27,24 @@
   <link rel="stylesheet" href="/public/css/app.min.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="/public/css/font.css" type="text/css" />
-    </head>
-    <body>
-        
-        <div id="root">
+</head>
+<body>
+  <div id="root">
         </div>
-        <script src="/public/scripts/jquery.js"></script>
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/react-router/umd/react-router.min.js"></script>
+  <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+  <script type="text/babel" src="/public/scripts/manage_books_components.js" ></script>
+
+<!-- build:js scripts/app.html.js -->
+<!-- jQuery -->
+  <script src="/public/scripts/jquery.js"></script>
 <!-- Bootstrap -->
   <script src="/public/scripts/tether.min.js"></script>
   <script src="/public/scripts/bootstrap.js"></script>
@@ -48,15 +64,12 @@
   <script scripts="/public/scripts/ui-screenfull.js"></script>
   <script scripts="/public/scripts/ui-scroll-to.js"></script>
   <script scripts="/public/scripts/ui-toggle-class.js"></script>
-        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-        <script src="https://unpkg.com/react-router/umd/react-router.min.js"></script>
-        <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
-        <script type="text/babel" src="/public/scripts/manage_books_components.js" ></script>
-        <script type="text/babel" src="/public/scripts/app.js"></script>
-    </body>
+
+  <script scripts="/public/scripts/app.js"></script>
+
+  <!-- ajax -->
+  <script src="/public/scripts/jquery.pjax.js"></script>
+  <script scripts="/public/scripts/ajax.js"></script>
+<!-- endbuild -->
+</body>
 </html>

@@ -1,4 +1,4 @@
 {
-    "db": "mongodb://localhost:27017/library-catalog",
+    "db": "mongodb://localhost:27017/librarycatalog",
     "port": 3000
 }
