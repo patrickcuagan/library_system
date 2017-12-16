@@ -6,7 +6,7 @@ module.exports = function(app) {
     app.post('/add_book', book.create);
 
     // Retrieve all Notes
-    app.get('/getbook', book.findAll);
+    app.get('/get_books', book.findAll);
 
     // Retrieve a single Note with noteId
     app.get('/book/:bookId', book.findOne);

@@ -1,16 +1,27 @@
 class ManageBooksBox extends React.Component {
+	constructor() {
+        super();
+
+        this.state = {
+            books: [],
+
+        }
+    }
 
     componentWillMount() {
     	console.log("ey");
         $.ajax({
-   		    //type: "POST",
-            //url: "/manage_books"
-/*            headers: {
-                "Authorization": sessionStorage.getItem("token")
-            }*/
-        })/*
-        .done((status, xhr) => {
-            console.log("ey");
+   		    type: "GET",
+            url: "/get_books",
+            success: (books) => {
+                this.setState({
+                    books
+                });
+                console.log(books);
+
+            }
+        }).done((status, xhr) => {
+
         }).fail((xhr) => {
             console.log(xhr.status);
 
@@ -25,7 +36,7 @@ class ManageBooksBox extends React.Component {
             this.setState({
                 auth: false
             });
-        }*/
+        }
     }
 
     render() {
@@ -127,43 +138,18 @@ class ManageBooksBox extends React.Component {
 				        }" className="table table-striped b-t b-b">
 				        <thead>
 				          <tr>
-				            <th style={{width:'40%'}}>Name</th>
-				            <th style={{width:'30%'}}>Author</th>
-				            <th style={{width:'10%'}}>Status</th>
-				            <th style={{width:'10%', align: 'center'}}>Edit</th>
-				            <th style={{width:'10%', align: 'center'}}>Delete</th>
+				            <th style={{width:'30%'}}>Title</th>
+				            <th style={{width:'20%'}}>Author</th>
+				            <th style={{width:'13%'}}>Genre</th>
+				            <th style={{width:'13%'}}>Year Published</th>
+				            <th style={{width:'7%', align: 'center'}}>Edit</th>
+				            <th style={{width:'7%', align: 'center'}}>Delete</th>
 				          </tr>
 				        </thead>
 				        <tbody>
-				          <tr>
-				            <td>Turtles All The Way Down</td>
-				            <td>John Green</td>
-				            <td>Available</td>
-				            <td style={{align: 'center'}}><a onClick={this._handleClick.bind(this)}><i className="fa fa-edit"></i></a></td>
-				            <td style={{align: 'center'}}><a onClick={this._handleClick.bind(this)}><i className="fa fa-trash"></i></a></td>
-				          </tr>
-				          <tr>
-				            <td>The Sun and Her Flowers</td>
-				            <td>Rupi Kaur</td>
-				            <td>Available</td>
-				            <td style={{align: 'center'}}><i className="fa fa-edit"></i></td>
-				            <td style={{align: 'center'}}><i className="fa fa-trash"></i></td>
-				          </tr>
-				          <tr>
-				            <td>Origin: A Novel</td>
-				            <td>Dan Brown</td>
-				            <td>Available</td>
-				            <td style={{align: 'center'}}><i className="fa fa-edit"></i></td>
-				            <td style={{align: 'center'}}><i className="fa fa-trash"></i></td>
-				          </tr>
-				          <tr>
-				            <td>Everything is Mama</td>
-				            <td>Jimmy Fallon</td>
-				            <td>Available</td>
-				            <td style={{align: 'center'}}><i className="fa fa-edit"></i></td>
-				            <td style={{align: 'center'}}><i className="fa fa-trash"></i></td>
-				          </tr>
-				          
+				        	<BookList books={this.state.books} />
+				         
+				          			          
 				        </tbody>
 				      </table>
 				    </div>
@@ -180,4 +166,83 @@ class ManageBooksBox extends React.Component {
 
         console.log("clicked!");
     } 
+}
+
+class BookList extends React.Component {
+
+    render() {
+        let books = this._getBooks();
+
+        return(
+            books.map((book) => 
+                    <BookRow 
+                        key={book._id}
+                        bookId={book._id}
+                        title={book.title}
+                        author={book.author}
+                        genre={book.genre}
+                        year={book.year} />
+                )
+        );
+    }
+
+    _getBooks() {
+        return this.props.books;
+    }
+}
+
+class BookRow extends React.Component {
+
+    constructor() {
+        super();
+/*
+        this.state = {
+            refresh: false,
+            edit: ""
+        }*/
+    }
+
+    render() {
+
+/*        if(this.state.edit != "") {
+            return (
+                <Redirect to={`/meeting/${this.state.edit}`} />
+            );
+        }
+
+        if(this.state.refresh) {
+            return (                
+                <Redirect to="/" />
+            );
+        }
+*/
+        return(
+        		 /*<tr>
+				            <td>Turtles All The Way Down</td>
+				            <td>John Green</td>
+				            <td>Available</td>
+				            <td style={{align: 'center'}}><a onClick={this._handleClick.bind(this)}><i className="fa fa-edit"></i></a></td>
+				            <td style={{align: 'center'}}><a onClick={this._handleClick.bind(this)}><i className="fa fa-trash"></i></a></td>
+				          </tr>*/
+                    <tr>
+				            <td>{this.props.title}</td>
+				            <td>{this.props.author}</td>
+				            <td>{this.props.genre}</td>
+				            <td>{this.props.year}</td>
+				            <td style={{align: 'center'}}><a onClick={this._handleEdit.bind(this, this.props.bookId)}><i className="fa fa-edit"></i></a></td>
+				            <td style={{align: 'center'}}><a onClick={this._handleDelete.bind(this, this.props.bookId)}><i className="fa fa-trash"></i></a></td>
+				    </tr>
+        );
+    }
+    _handleEdit(bookId) {
+
+        console.log("Edit clicked! Id is " + bookId);
+    } 
+
+    _handleDelete(bookId) {
+        
+
+        console.log("Delete clicked! Id is" + bookId);
+    } 
+
 }
