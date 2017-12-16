@@ -20,23 +20,7 @@ class ManageBooksBox extends React.Component {
                 console.log(books);
 
             }
-        }).done((status, xhr) => {
-
-        }).fail((xhr) => {
-            console.log(xhr.status);
-
-            if(xhr.status == 401) {
-                this.setState({
-                    auth: false
-                });
-            }
-        });
-
-        if(!sessionStorage.getItem("token")) {
-            this.setState({
-                auth: false
-            });
-        }
+        })
     }
 
     render() {
@@ -223,54 +207,108 @@ class BookRow extends React.Component {
 
     constructor() {
         super();
-/*
-        this.state = {
-            refresh: false,
-            edit: ""
-        }*/
     }
 
     render() {
-
-/*        if(this.state.edit != "") {
-            return (
-                <Redirect to={`/meeting/${this.state.edit}`} />
-            );
-        }
-
-        if(this.state.refresh) {
-            return (                
-                <Redirect to="/" />
-            );
-        }
-*/
         return(
-        		 /*<tr>
-				            <td>Turtles All The Way Down</td>
-				            <td>John Green</td>
-				            <td>Available</td>
-				            <td style={{align: 'center'}}><a onClick={this._handleClick.bind(this)}><i className="fa fa-edit"></i></a></td>
-				            <td style={{align: 'center'}}><a onClick={this._handleClick.bind(this)}><i className="fa fa-trash"></i></a></td>
-				          </tr>*/
-                    <tr>
-				            <td>{this.props.title}</td>
-				            <td>{this.props.author}</td>
-				            <td>{this.props.genre}</td>
-				            <td>{this.props.year}</td>
-				            <td style={{align: 'center'}}><a onClick={this._handleEdit.bind(this, this.props.bookId)}><i className="fa fa-edit"></i></a></td>
-				            <td style={{align: 'center'}}><a onClick={this._handleDelete.bind(this, this.props.bookId)}><i className="fa fa-trash"></i></a></td>
-				    </tr>
+	        <tr>
+		            <td>{this.props.title}</td>
+		            <td>{this.props.author}</td>
+		            <td>{this.props.genre}</td>
+		            <td>{this.props.year}</td>
+		            <td style={{align: 'center'}}><a data-toggle="modal" data-target={'#'  + this.props.bookId}><i className="fa fa-edit"></i></a>
+
+
+					<div id={this.props.bookId} className="modal" data-backdrop="true">
+						<div className="modal-dialog">
+						    <div className="modal-content">
+						        <div className="modal-header">
+						            <h5 className="modal-title">Edit This Book</h5>
+						      	</div>
+						        <div className="modal-body p-lg">
+
+						        <div className="box">
+						            <div className="box-body">
+						                <form onSubmit={this._handleEdit.bind(this, this.props.bookId)}>
+						                <div className="form-group">
+						              		<label htmlFor="exampleInputEmail1">Title</label>
+						              		<input type="text" name="title" id="title" ref={(input) => this._title = input} className="form-control" placeholder={this.props.title} />
+						            	</div>
+						            	<div className="form-group">
+						              		<label htmlFor="exampleInputPassword1">Author</label>
+						              		<input type="text" name="author" id="author" ref={(input) => this._author = input} className="form-control" placeholder={this.props.author} />
+						            	</div>
+						            	<div className="form-group">
+						              		<label htmlFor="exampleInputPassword1">Genre</label>
+						              		<input type="text" name="genre" id="genre" ref={(input) => this._genre = input} className="form-control" placeholder={this.props.genre} />
+						            	</div>
+						            	<div className="form-group">
+						              		<label htmlFor="exampleInputPassword1">Description</label>
+						              		<input type="text" name="description" id="description" ref={(input) => this._description = input} className="form-control" placeholder={this.props.description} />
+						            	</div>
+						            	<div className="form-group">
+						              		<label htmlFor="exampleInputPassword1">Year</label>
+						              		<input type="text" name="year" id="year" ref={(input) => this._year = input} className="form-control" placeholder={this.props.year} />
+						            	</div>
+						            	<div className="form-group">
+
+						            		<button type="submit" className="btn success m-b">Submit</button>
+						                </div>
+
+						          		</form>
+
+						      		</div>
+						    	</div>
+						      </div>
+						      
+						    </div>
+						</div>
+					</div>
+		            </td>
+		            <td style={{align: 'center'}}><a onClick={this._handleDelete.bind(this, this.props.bookId)}><i className="fa fa-trash"></i></a></td>
+		    </tr>
         );
     }
     _handleEdit(bookId) {
 
-        console.log("Edit clicked! Id is " + bookId);
+		console.log("Edit clicked! Id is " + bookId);
+
+		let book = {
+            title: this._title.value,
+            author: this._author.value,
+            genre: this._genre.value,
+            description: this._description.value,
+            year: this._year.value
+        }
+
+        $.ajax({
+            type: "PUT",
+            url: `/api/edit_book/${bookId}`,
+            data: book
+        }).done((book, status, xhr) => {
+			window.location.href = "http://localhost:3000/";
+        }).fail((xhr) => {
+            console.log(xhr.status);
+        });
     } 
 
     _handleDelete(bookId) {
-        
-
         console.log("Delete clicked! Id is" + bookId);
-    } 
+
+         $.ajax({
+            type: "DELETE",
+            url: `/api/book/${bookId}`,
+            headers: {
+                "Authorization": sessionStorage.getItem("token")
+            }
+        }).done((res, status, xhr) => {
+        	window.location.href = "http://localhost:3000/";
+            this.setState({
+                refresh: true
+            });
+        }).fail((xhr) => {
+            console.log(xhr.status);
+        });
+    }
 
 }

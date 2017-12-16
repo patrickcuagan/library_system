@@ -17,6 +17,8 @@ router.patch('/book/:id', ctrl.update);
 router.delete('/book/:id', ctrl.delete);*/
 
 router.post("/add_book", bookCtrl.create);
+router.delete("/book/:bookId", bookCtrl.delete);
+router.put("/edit_book/:bookId", bookCtrl.update);
 
 router.use(function(err, req, res, next) {
     logger.error(err);

@@ -54,6 +54,7 @@ exports.findOne = function(req, res) {
 
 exports.update = function(req, res) {
     // Update a note identified by the noteId in the request
+    console.log(req.params.bookId);
     Book.findById(req.params.bookId, function(err, book) {
         if(err) {
             res.status(500).send({message: "Could not find a book with id " + req.params.bookId});
