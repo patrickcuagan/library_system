@@ -85,26 +85,26 @@ class ManageBooksBox extends React.Component {
 
 				      <div className="box">
 				        <div className="box-body">
-				          <form method="post" action="/add_book">
+				          <form onSubmit={this._handleSubmit.bind(this)}>
 				            <div className="form-group">
 				              <label htmlFor="exampleInputEmail1">Title</label>
-				              <input type="text" name="title" id="title" className="form-control" placeholder="Title" />
+				              <input type="text" name="title" id="title" ref={(input) => this._title = input} className="form-control" placeholder="Title" />
 				            </div>
 				            <div className="form-group">
 				              <label htmlFor="exampleInputPassword1">Author</label>
-				              <input type="text" name="author" id="author" className="form-control" placeholder="Author" />
+				              <input type="text" name="author" id="author" ref={(input) => this._author = input} className="form-control" placeholder="Author" />
 				            </div>
 				            <div className="form-group">
 				              <label htmlFor="exampleInputPassword1">Genre</label>
-				              <input type="text" name="genre" id="genre" className="form-control" placeholder="Genre" />
+				              <input type="text" name="genre" id="genre" ref={(input) => this._genre = input} className="form-control" placeholder="Genre" />
 				            </div>
 				            <div className="form-group">
 				              <label htmlFor="exampleInputPassword1">Description</label>
-				              <input type="text" name="description" id="description" className="form-control" placeholder="Description" />
+				              <input type="text" name="description" id="description" ref={(input) => this._description = input} className="form-control" placeholder="Description" />
 				            </div>
 				            <div className="form-group">
 				              <label htmlFor="exampleInputPassword1">Year</label>
-				              <input type="text" name="year" id="year" className="form-control" placeholder="Year of Publication" />
+				              <input type="text" name="year" id="year" ref={(input) => this._year = input} className="form-control" placeholder="Year of Publication" />
 				            </div>
 				            <div className="form-group">
 
@@ -166,6 +166,34 @@ class ManageBooksBox extends React.Component {
 
         console.log("clicked!");
     } 
+
+	    _handleSubmit(e) {
+        e.preventDefault();
+
+        let book = {
+            title: this._title.value,
+            author: this._author.value,
+            genre: this._genre.value,
+            description: this._description.value,
+            year: this._year.value
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/api/add_book",
+            headers: {
+                "Authorization": sessionStorage.getItem("token")
+            },
+            data: book
+        }).done((book, status, xhr) => {
+			window.location.href = "http://localhost:3000/";
+        }).fail((xhr) => {
+            console.log(xhr.status);
+        });
+
+
+    }
+
 }
 
 class BookList extends React.Component {

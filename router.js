@@ -5,7 +5,7 @@ var jwt = require("jsonwebtoken");
 //var adminCtrl = require('./server/controllers/admin-controller.js');
 
 //var sessionCtrl = require("./server/controllers/session.server.controller.js");
-//var bookCtrl = require("./server/controllers/meeting.server.controller.js");
+var bookCtrl = require("./server/controllers/book.controller.js");
 var router = express.Router();
 
 //routes
@@ -15,6 +15,8 @@ router.get('/books', ctrl.getAll);
 router.put('/book/:id', ctrl.update);
 router.patch('/book/:id', ctrl.update);
 router.delete('/book/:id', ctrl.delete);*/
+
+router.post("/add_book", bookCtrl.create);
 
 router.use(function(err, req, res, next) {
     logger.error(err);
