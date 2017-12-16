@@ -56,7 +56,7 @@ function Server(port, router) {
 
 		// Books
 		app.get('/', function(req, res){
-			res.sendfile(__dirname + '/public/views/gallery.html');
+			res.sendfile(__dirname + '/public/views/manage_books.html');
 		})
 
 		app.get('/book', function(req, res){

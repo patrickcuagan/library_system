@@ -57,7 +57,7 @@
             <input type="checkbox" required><i class="primary"></i> Agree the <a href>terms and policy</a>
           </label>
         </div>
-        <button type="submit" value="Sign up" class="btn primary btn-block p-x-md">Sign up</button>
+        <button id="submit" type="submit" value="Sign up" class="btn primary btn-block p-x-md">Sign up</button>
       </form>
     </div>
 
@@ -92,7 +92,13 @@
   <script scripts="/public/scripts/ui-screenfull.js"></script>
   <script scripts="/public/scripts/ui-scroll-to.js"></script>
   <script scripts="/public/scripts/ui-toggle-class.js"></script>
-
+  <script>
+    document.getElementById("submit").addEventListener("click", function() {
+        var book = require('../controllers/book.controller.js');
+        book.findAll;
+        console.log("ey");
+    });
+  </script>
   <script scripts="/public/scripts/app.js"></script>
 
   <!-- ajax -->
