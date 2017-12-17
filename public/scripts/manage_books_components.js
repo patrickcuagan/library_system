@@ -4,6 +4,7 @@ class ManageBooksBox extends React.Component {
 
         this.state = {
             books: [],
+            message: ""
 
         }
     }
@@ -59,7 +60,7 @@ class ManageBooksBox extends React.Component {
 			            </div>
 			        </div>
 			    </div>
-			    <div id="m" className="modal" data-backdrop="true">
+			    <div id="m" className="modal">
 				  <div className="modal-dialog">
 				    <div className="modal-content">
 				      <div className="modal-header">
@@ -69,7 +70,7 @@ class ManageBooksBox extends React.Component {
 
 				      <div className="box">
 				        <div className="box-body">
-				          <form onSubmit={this._handleSubmit.bind(this)}>
+				          <form>
 				            <div className="form-group">
 				              <label htmlFor="exampleInputEmail1">Title</label>
 				              <input type="text" name="title" id="title" ref={(input) => this._title = input} className="form-control" placeholder="Title" />
@@ -92,7 +93,7 @@ class ManageBooksBox extends React.Component {
 				            </div>
 				            <div className="form-group">
 
-				            <button type="submit" className="btn success m-b">Submit</button>
+				            <button type="submit" className="btn success m-b" data-dismiss="modal" onClick={this._handleSubmit.bind(this)}>Submit</button>
 				                        </div>
 
 				          </form>
@@ -104,10 +105,14 @@ class ManageBooksBox extends React.Component {
 				    </div>
 				  </div>
 				</div>
-				<div className="padding" style={{marginTop:'50px'}}>
+
+				<div className="padding" style={{marginTop:'30px'}}>
+				<div className="alert-add alert alert-success invisible" style={{marginTop:'20px', width:'24%'}}>
+	                {this.state.message}
+	            </div>
 				  <div className="box">
 				    <div className="box-header">
-				      <h2>All Users</h2>
+				      <h2>List of Books</h2>
 				    </div>
 				    <div className="table-responsive">
 				      <table ui-jp="dataTable" ui-options="{
@@ -131,9 +136,7 @@ class ManageBooksBox extends React.Component {
 				          </tr>
 				        </thead>
 				        <tbody>
-				        	<BookList books={this.state.books} />
-				         
-				          			          
+				        	<BookList manageBox={this} books={this.state.books} />
 				        </tbody>
 				      </table>
 				    </div>
@@ -170,28 +173,57 @@ class ManageBooksBox extends React.Component {
             },
             data: book
         }).done((book, status, xhr) => {
-			window.location.href = "http://localhost:3000/";
+        	$("#m").modal('hide');
+        	$(".model-backdrop").removeClass("model-backdrop");
+        	this._showAddSuccess("The book was added successfully!");
         }).fail((xhr) => {
             console.log(xhr.status);
         });
+		$.ajax({
+		   		    type: "GET",
+		            url: "/get_books",
+		            success: (books) => {
+		                this.setState({
+		                    books
+		                });
+		                console.log(books);
 
+		            }
+		        })
 
+    }
+    _showAddSuccess(msg) {
+        this.setState({
+            message: msg
+        });
+        let addSuccess = $(".alert-add");
+        
+        if(addSuccess.hasClass("invisible")) {
+            addSuccess.removeClass("invisible");
+        }
     }
 
 }
 
 class BookList extends React.Component {
+	constructor(props) {
+    super(props);
 
+}
     render() {
         let books = this._getBooks();
+        let box = this._getManageBox();
+                console.log(this)
 
         return(
             books.map((book) => 
                     <BookRow 
+                    	manageBox={this._getManageBox()}
                         key={book._id}
                         bookId={book._id}
                         title={book.title}
                         author={book.author}
+                        description={book.description}
                         genre={book.genre}
                         year={book.year} />
                 )
@@ -201,14 +233,19 @@ class BookList extends React.Component {
     _getBooks() {
         return this.props.books;
     }
+    _getManageBox() {
+        return this.props.manageBox;
+    }
 }
 
 class BookRow extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log(this.props.manageBox);
     }
 
+  
     render() {
         return(
 	        <tr>
@@ -286,10 +323,14 @@ class BookRow extends React.Component {
             url: `/api/edit_book/${bookId}`,
             data: book
         }).done((book, status, xhr) => {
-			window.location.href = "http://localhost:3000/";
+			window.location.href = "http://localhost:3000/manage_books";
+			
+			this._showSuccess("The book was edited successfully!");
         }).fail((xhr) => {
             console.log(xhr.status);
         });
+     
+        
     } 
 
     _handleDelete(bookId) {
@@ -302,13 +343,43 @@ class BookRow extends React.Component {
                 "Authorization": sessionStorage.getItem("token")
             }
         }).done((res, status, xhr) => {
-        	window.location.href = "http://localhost:3000/";
+        	$("#m").modal('hide');
+        	$(".model-backdrop").removeClass("model-backdrop");
+        	this._showSuccess("The book was deleted successfully!")
             this.setState({
                 refresh: true
             });
         }).fail((xhr) => {
             console.log(xhr.status);
         });
+
+        
     }
+     _showSuccess(msg) {
+     	$(document).ready(function(){
+console.log("PLS");
+	     	});
+     	$.ajax({
+		   		    type: "GET",
+		            url: "/get_books",
+		            success: (books) => {
+		                this.props.manageBox.setState({
+		                    books
+		                });
+
+		            }
+		        });
+
+        this.props.manageBox.setState({
+            message: msg
+        });
+        console.log(this.props.manageBox.state.message);
+        let addSuccess = $(".alert-add");
+        
+        if(addSuccess.hasClass("invisible")) {
+            addSuccess.removeClass("invisible");
+        }
+    }
+     
 
 }
