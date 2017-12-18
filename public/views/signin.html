@@ -67,6 +67,8 @@
   </div>
 <!-- ############ LAYOUT END-->
 
+  <p style="display: none" id="boolMe">put</p>
+
   </div>
 <!-- build:js scripts/app.html.js -->
 <!-- jQuery -->
@@ -118,8 +120,14 @@
                   sessionStorage.SessionName = "logged_in";
                   window.location.href = "http://localhost:3000/";
                } else {
-                    var add = "<p style='color: red'>Wrong username/password. Please try again.</p>";
-                    $("#putHere").append(add);
+                    var lol = $("#boolMe").text();
+                    console.log(lol);
+
+                    if(lol == "put") {
+                        var add = "<p style='color: red'>Wrong username/password. Please try again.</p>";
+                        $("#putHere").append(add);
+                        $("#boolMe").text("dont");
+                    }
                }
            }
         });
