@@ -269,23 +269,23 @@ class BookRow extends React.Component {
 						                <form onSubmit={this._handleEdit.bind(this, this.props.bookId)}>
 						                <div className="form-group">
 						              		<label htmlFor="exampleInputEmail1">Title</label>
-						              		<input type="text" name="title" id="title" ref={(input) => this._title = input} className="form-control" placeholder={this.props.title} />
+						              		<input type="text" name="title" id="title" ref={(input) => this._title = input} className="form-control" defaultValue={this.props.title} />
 						            	</div>
 						            	<div className="form-group">
 						              		<label htmlFor="exampleInputPassword1">Author</label>
-						              		<input type="text" name="author" id="author" ref={(input) => this._author = input} className="form-control" placeholder={this.props.author} />
+						              		<input type="text" name="author" id="author" ref={(input) => this._author = input} className="form-control" defaultValue={this.props.author} />
 						            	</div>
 						            	<div className="form-group">
 						              		<label htmlFor="exampleInputPassword1">Genre</label>
-						              		<input type="text" name="genre" id="genre" ref={(input) => this._genre = input} className="form-control" placeholder={this.props.genre} />
+						              		<input type="text" name="genre" id="genre" ref={(input) => this._genre = input} className="form-control" defaultValue={this.props.genre} />
 						            	</div>
 						            	<div className="form-group">
 						              		<label htmlFor="exampleInputPassword1">Description</label>
-						              		<input type="text" name="description" id="description" ref={(input) => this._description = input} className="form-control" placeholder={this.props.description} />
+						              		<input type="text" name="description" id="description" ref={(input) => this._description = input} className="form-control" defaultValue={this.props.description} />
 						            	</div>
 						            	<div className="form-group">
 						              		<label htmlFor="exampleInputPassword1">Year</label>
-						              		<input type="text" name="year" id="year" ref={(input) => this._year = input} className="form-control" placeholder={this.props.year} />
+						              		<input type="text" name="year" id="year" ref={(input) => this._year = input} className="form-control" defaultValue={this.props.year} />
 						            	</div>
 						            	<div className="form-group">
 
