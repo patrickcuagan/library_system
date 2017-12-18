@@ -36,7 +36,7 @@ class AppBox extends React.Component {
 			                        <span ui-include="client/img/i_0.svg'"></span>
 			                      </i>
 			                    </span>
-			                    <span className="nav-text">Sign Out</span>
+			                    <span className="nav-text" id="clickSignOut">Sign Out</span>
 			                  </a>
 			                </li> 
 

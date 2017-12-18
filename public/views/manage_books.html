@@ -64,7 +64,16 @@
         if(sessionStorage.getItem("SessionName") != "logged_in") {
           window.location.href = "http://localhost:3000/signin";
         }
+
+
+        $("#clickSignOut").on('click', function() {
+          sessionStorage.clear();
+          window.location.href = "http://localhost:3000/signin";
+        });
       });
+    </script>
+
+    <script>
     </script>
 
 
