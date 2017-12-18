@@ -41,15 +41,15 @@
 
     <div class="p-a-md box-color r box-shadow-z1 text-color m-a">
       <div class="m-b text-sm">
-        Sign up to your Library Account
+        Sign up for your Library Account
       </div>
-      <form method="post" action="/signup">
+      <form method="post" action="/signup" id="signUp">
             <div class="md-form-group">
-          <input type="email" name="username" class="md-input" required>
+          <input type="email" name="username" class="md-input" id="emailInput" required>
           <label>Email</label>
         </div>
         <div class="md-form-group">
-          <input type="password" name="password" class="md-input" required>
+          <input type="password" name="password" class="md-input" id="passwordInput" required>
           <label>Password</label>  
         </div>
         <div class="m-b-md">
@@ -105,5 +105,29 @@
   <script src="/public/scripts/jquery.pjax.js"></script>
   <script scripts="/public/scripts/ajax.js"></script>
 <!-- endbuild -->
+
+<script>
+    $("#signUp").submit(function(e) {
+      var user = {
+        username: $("#emailInput").val(),
+        password: $("#passwordInput").val()
+      }
+
+      var url = "/signup";
+
+      $.ajax({
+           type: "POST",
+           url: url,
+           data: user, // serializes the form's elements.
+           success: function(data)
+           {
+              window.location.href = "http://localhost:3000/signin";
+           }
+        });
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    });
+  </script>
+
+
 </body>
 </html>
