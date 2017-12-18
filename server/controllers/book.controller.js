@@ -1,5 +1,52 @@
 var Book = require('../models/book.model.js');
 
+var book1 = new Book({
+    title:"Harry Potter: The Philosopher's Stone",
+    author:"J.K. Rowling",
+    genre:"Fantasy, Drama, Mystery, Fiction",
+    description: "The first book of Harry Potter",
+    year: "1997"
+});
+
+var book2 = new Book({
+    title:"Harry Potter: The Chamber of Secrets",
+    author:"J.K. Rowling",
+    genre:"Fantasy, Drama, Mystery, Fiction",
+    description: "The second book of Harry Potter",
+    year: "1998"
+});
+
+var book3 = new Book({
+    title:"Harry Potter: The Prisoner of Azkaban",
+    author:"J.K. Rowling",
+    genre:"Fantasy, Drama, Mystery, Fiction",
+    description: "The third book of Harry Potter",
+    year: "1999"
+});
+
+var book4 = new Book({
+    title:"Harry Potter: The Goblet of Fire",
+    author:"J.K. Rowling",
+    genre:"Fantasy, Drama, Mystery, Fiction",
+    description: "The fourth book of Harry Potter",
+    year: "2000"
+});
+
+var book5 = new Book({
+    title:"Harry Potter: The Order of the Phoenix",
+    author:"J.K. Rowling",
+    genre:"Fantasy, Drama, Mystery, Fiction",
+    description: "The fifth book of Harry Potter",
+    year: "2003"
+});
+
+
+book1.save();
+book2.save();
+book3.save();
+book4.save();
+book5.save();
+
 exports.create = function(req, res) {
     // Create and Save a new Note
     if(!req.body.title) {
