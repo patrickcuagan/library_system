@@ -45,7 +45,7 @@ class AppBox extends React.Component {
 			                </li>
 			              
 			                <li>
-			                  <a href="#/manage_books" >
+			                  <a href="/" >
 			                    <span className="nav-icon">
 			                      <i className="material-icons">&#xe3fc;
 			                        <span ui-include="'../assets/images/i_0.svg'"></span>

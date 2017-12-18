@@ -46,31 +46,31 @@ function Server(port, router) {
 			res.sendfile(__dirname + '/public/views/signup.html');
 		})
 
-		app.get('/profile', function(req, res){
-			res.sendfile(__dirname + '/public/views/profile.html');
-		})
+		// app.get('/profile', function(req, res){
+		// 	res.sendfile(__dirname + '/public/views/profile.html');
+		// })
 
-		app.get('/settings', function(req, res){
-			res.sendfile(__dirname + '/public/views/setting.html');
-		})
+		// app.get('/settings', function(req, res){
+		// 	res.sendfile(__dirname + '/public/views/setting.html');
+		// })
 
 		// Books
 		app.get('/', function(req, res){
 			res.sendfile(__dirname + '/public/views/manage_books.html');
 		})
 
-		app.get('/book', function(req, res){
-			res.sendfile(__dirname + '/public/views/book.html');
-		})
+		// app.get('/book', function(req, res){
+		// 	res.sendfile(__dirname + '/public/views/book.html');
+		// })
 
-		app.get('/search', function(req, res){
-			res.sendfile(__dirname + '/public/views/search.html');
-		})
+		// app.get('/search', function(req, res){
+		// 	res.sendfile(__dirname + '/public/views/search.html');
+		// })
 
-		// Admin
-		app.get('/manage_users', function(req, res){
-			res.sendfile(__dirname + '/public/views/manage_users.html');
-		})
+		// // Admin
+		// app.get('/manage_users', function(req, res){
+		// 	res.sendfile(__dirname + '/public/views/manage_users.html');
+		// })
 
 		app.get('/manage_books', function(req, res){
 			res.sendfile(__dirname + '/public/views/manage_books.html');
