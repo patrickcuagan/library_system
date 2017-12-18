@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Library System</title>
+  <title>Library Catalog</title>
   <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,21 +42,21 @@
       <div class="m-b text-sm">
         Sign in with your Library Account
       </div>
-      <form name="form">
+      <form method="post" id="signIn" action="/trysignin">
         <div class="md-form-group float-label">
-          <input type="email" class="md-input" ng-model="user.email" required>
+          <input type="email" class="md-input" id="emailInput">
           <label>Email</label>
         </div>
         <div class="md-form-group float-label">
-          <input type="password" class="md-input" ng-model="user.password" required>
+          <input type="password" class="md-input" id="passwordInput">
           <label>Password</label>
         </div>
-        <div class="m-b-md">
+        <div class="m-b-md" id="putHere">
           <label class="md-check">
             <input type="checkbox"><i class="primary"></i> Keep me signed in
           </label>
         </div>
-        <a class="btn primary btn-block p-x-md" href="/">Sign in</a>
+        <input class="btn primary btn-block p-x-md" value="Sign in" type="submit">
       </form>
     </div>
 
@@ -65,7 +65,6 @@
       <div>Do not have an account? <a ui-sref="access.signup" href="signup" class="text-primary _600">Sign up</a></div>
     </div>
   </div>
-
 <!-- ############ LAYOUT END-->
 
   </div>
@@ -98,6 +97,37 @@
   <!-- ajax -->
   <script src="/public/scripts/jquery.pjax.js"></script>
   <script scripts="/public/scripts/ajax.js"></script>
+
+  <script>
+    $("#signIn").submit(function(e) {
+      var user = {
+        username: $("#emailInput").val(),
+        password: $("#passwordInput").val()
+      }
+
+      var url = "/trysignin";
+
+      $.ajax({
+           type: "POST",
+           url: url,
+           data: user, // serializes the form's elements.
+           success: function(data)
+           {
+               console.log(data);
+               if(data.username == $("#emailInput").val()) {
+                  sessionStorage.SessionName = "logged_in";
+                  window.location.href = "http://localhost:3000/";
+               } else {
+                    var add = "<p style='color: red'>Wrong username/password. Please try again.</p>";
+                    $("#putHere").append(add);
+               }
+           }
+        });
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+    });
+  </script>
+
+
 <!-- endbuild -->
 </body>
 </html>

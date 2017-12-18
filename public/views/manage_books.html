@@ -58,5 +58,15 @@
         <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
         <script type="text/babel" src="/public/scripts/manage_books_components.js" ></script>
         <script type="text/babel" src="/public/scripts/app.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        if(sessionStorage.getItem("SessionName") != "logged_in") {
+          window.location.href = "http://localhost:3000/signin";
+        }
+      });
+    </script>
+
+
     </body>
 </html>

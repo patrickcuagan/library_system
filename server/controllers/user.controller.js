@@ -74,3 +74,18 @@ exports.delete = function(req, res) {
     });
 };
 
+exports.login = function (req, res){
+    User.find(req.body, function (err, results){
+        if (err){
+            console.log("Error Out");
+        }
+        
+        if (results && results.length === 1){
+            var userData= results[0];
+            res.send({username: userData.username});
+        }   else {
+            res.send({username: "fail"});
+        }
+    })
+}
+

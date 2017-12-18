@@ -4,6 +4,7 @@ module.exports = function(app) {
 
     // Create a new Note
     app.post('/signup', user.create);
+    app.post('/trysignin', user.login);
 
  /*   // Retrieve all Notes
     app.get('/notes', user.findAll);

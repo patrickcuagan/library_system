@@ -70,6 +70,7 @@ class AppBox extends React.Component {
         );
     }
 }
+
 const ManageBooks = () => <ManageBooksBox />
 
 ReactDOM.render(<AppBox />, document.getElementById("root"));
